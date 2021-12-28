@@ -1,0 +1,6 @@
+1) updateTodo page can access anybody without User id so make it protect -- done
+
+2) I want to try to use only one Registration servlet and that will provide all the responses i.e for login, updating and logout
+
+3) want to put some good navbar which can contain Todo logo on the left corner a
+  nd User info on the other side and it includes edit user, delete user, and logout button---done
