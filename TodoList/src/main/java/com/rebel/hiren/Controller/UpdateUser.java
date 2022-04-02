@@ -31,12 +31,13 @@ public class UpdateUser extends HttpServlet {
 		String usur = request.getParameter("uSur");
 		String upass = request.getParameter("uPass");
 		String uemail = request.getParameter("uEmail");
-		String hashmake = request.getParameter("hash");
+		String hashmake = request.getParameter("has");
+		int st = Integer.parseInt(request.getParameter("st"));
 		
 		String newPass = DigestUtils.md5Hex(upass);
 		
 		User existingUser = new User(id, uname, usur, uemail, newPass, hashmake);
-		
+		     existingUser.setStatus(st);
 		try {
 			
 			udao.updateUser(existingUser);

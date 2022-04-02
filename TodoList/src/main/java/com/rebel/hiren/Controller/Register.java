@@ -14,13 +14,14 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 import com.rebel.hiren.Beans.User;
 import com.rebel.hiren.Dao.UserDao;
+import com.rebel.hiren.Mail.SendMail;
 
 /**
  * Servlet implementation class Register
  */
 public class Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private UserDao udao = new UserDao();   
+    
     
 
 	
@@ -30,30 +31,59 @@ public class Register extends HttpServlet {
 		HttpSession htse = request.getSession();
 		
 	
-		String uname = request.getParameter("uName");
-		String usur = request.getParameter("uSur");
-		String upass = request.getParameter("uPass");
-		String uemail = request.getParameter("uEmail");
+		if(request.getParameter("sg-btn") != null)
+		{
 		
-		
-		String newPass = DigestUtils.md5Hex(upass);
-		
-		String hashmake;
-		Random rd = new Random();
-		rd.nextInt(999999);
-		hashmake = DigestUtils.md5Hex(""+rd);
-		
-		User newUser = new User(uname, usur, uemail, newPass, hashmake);
-		
-		try {
+			String uname = request.getParameter("uName");
+			String usur = request.getParameter("uSur");
+			String upass = request.getParameter("uPass");
+			String uemail = request.getParameter("uEmail");
 			
-			udao.saveUser(newUser);
-			htse.setAttribute("msg", "Data has been saved successfully :)");
+			
+			String newPass = DigestUtils.md5Hex(upass);
+			
+			String hashmake;
+			Random rd = new Random();
+			rd.nextInt(999999);
+			hashmake = DigestUtils.md5Hex(""+rd);
+			
+			User newUser = new User(uname, usur, uemail, newPass, hashmake);
+			     
+			UserDao udao = new UserDao();   
+			try {
+				
+				
+				
+				if(udao.saveUser(newUser) != true)
+				{
+					htse.setAttribute("msg", "Email is already in use :(");
+					response.sendRedirect("signup.jsp");
+					
+				}
+				else 
+				{
+					htse.setAttribute("newUser", newUser);
+					response.sendRedirect("verify.jsp");
+				}
+				
+			} catch (Exception e) {
+				System.out.println("sm prb wid register servlet ): "+e);
+			}
+		}
+		
+		if(request.getParameter("ReSend") != null)
+		{
+			String uemail = request.getParameter("email");
+			String upass = request.getParameter("has");
+			
+			SendMail mail = new SendMail(uemail, upass);
+			mail.sendMail();
+			
 			response.sendRedirect("verify.jsp");
 			
-		} catch (Exception e) {
-			System.out.println("sm prb wid register servlet ): ");
 		}
+		
+		
 	}
 
 	

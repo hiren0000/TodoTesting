@@ -69,6 +69,12 @@
 		    <input type="password" class="form-control" name="uPass" value="<%=user.getuPass() %>" required="required">
 		  </div>
 		  
+		   
+		  
+		    <input type="hidden" class="form-control" name="has" value="<%=user.getHashPass() %>" >
+		    <input type="hidden" class="form-control" name="st" value="<%=user.getStatus()%>">
+		  
+		  
 		  <div class="form-group">
             <button type="submit" name="updateUser" class="btn btn-primary">Update</button>
           </div>

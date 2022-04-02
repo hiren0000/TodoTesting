@@ -92,17 +92,10 @@ public class LogIn extends HttpServlet {
 			    String hashPass = DigestUtils.md5Hex(upass);
 			    
 			   
-			    
-			    
-			   
-			  
-			    
 			    UserDao dao = new UserDao();
 			    dao.updatePassById(uId, hashPass);
 			    
-			   
-					  
-					   out.print("yeah u have successfully changed Pass");
+			    out.print("yeah u have successfully changed Pass");
 				   
 
 			    

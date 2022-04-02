@@ -2,5 +2,25 @@
 
 2) I want to try to use only one Registration servlet and that will provide all the responses i.e for login, updating and logout
 
-3) want to put some good navbar which can contain Todo logo on the left corner a
-  nd User info on the other side and it includes edit user, delete user, and logout button---done
+
+
+Completed Tasks
+
+1) no can by pass verification process if they tries system would remove them from db
+
+
+29/03/2020
+2) Unique email address is done, no can create two different accounts using same email address
+
+3) I have implemented email verification through url 
+
+4)ReSend email function implemented but the same url and the random code are sending, not creating new code
+
+
+Remaining Tasks
+
+5) In future want to make some changes in verification email, just want to send the OTP for the more security
+
+
+7) In future, try to implement OTP verification for forgot password as well
+

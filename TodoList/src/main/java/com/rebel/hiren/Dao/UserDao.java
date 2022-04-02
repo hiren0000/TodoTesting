@@ -10,33 +10,41 @@ import com.rebel.hiren.Mail.SendMail;
 
 public class UserDao 
 {
-
+	
+	
 	public UserDao() {}
 	
 	//Saving new user Data
-	public void saveUser(User user)
+	public boolean saveUser(User user)
 	{
-		
-		
+		 
 		try {
 			
 			Session HibSes = FactoryProvider.getFactory().openSession();
 			Transaction tx = HibSes.beginTransaction();
 			
-			HibSes.save(user);
+			Query<User> query = HibSes.createQuery("from User U where U.uEmail = :email");
+			query.setParameter("email",  user.getuEmail());
+			User ExUser = query.uniqueResult();
 			
+			if(ExUser == null)
+			{
+				HibSes.save(user);
+			
+				
+//				sending data to send verifiy email address
+				SendMail mail = new SendMail(user.getuEmail(), user.getHashPass());
+				mail.sendMail();
+				return true;
+			}
 			tx.commit();
 			HibSes.close();
-			
-			//sending data to send verifiy email address
-			SendMail mail = new SendMail(user.getuEmail(), user.getHashPass());
-			mail.sendMail();
-						
+				
 		} catch (Exception e) {
 			System.out.println("sm prb wid saving object ):" +e);
 		}
 		
-		
+		return false;
 	}
 	
 	
@@ -56,9 +64,27 @@ public class UserDao
 			query.setParameter("email", email);
 			
 			user = query.uniqueResult();
-		
-			tx.commit();
-			HibSe.close();			
+		   
+			if(user != null)
+			
+			{
+				if(user.getStatus() == 0)
+				{
+					
+					Query<User> query3 = HibSe.createQuery("DELETE FROM User "+"Where uemail = :email");
+		            
+		            query3.setParameter("email", email);
+		            
+				    int s = query3.executeUpdate();
+				    System.out.println(" "+s);
+					
+					return null;
+					
+				}
+			}
+				
+				tx.commit();
+				HibSe.close();			
 			
 		} catch (Exception e) {
 			System.out.println("sm prb wid fetching data for login ):" +e);

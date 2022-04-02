@@ -33,7 +33,7 @@
 	  
 	  <div class="form-group">
 	    <label for="exampleInputEmail1">New Password</label>
-	    <input type="password" class="form-control" name="upass"  placeholder="Enter Email" required="required">
+	    <input type="password" class="form-control" name="upass"  placeholder="Enter New Password" required="required">
 	  </div>
 	  
 	   

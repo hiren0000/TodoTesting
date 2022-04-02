@@ -40,8 +40,8 @@ public class SendMail
 	public void sendMail()
 	{
 		//sender's email
-		String email = "";
-		String password = "";
+		final String email = "";
+		final String password = "";
 		
 		String host = "smtp.gmail.com";
 		
