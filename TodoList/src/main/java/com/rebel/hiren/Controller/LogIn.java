@@ -75,8 +75,8 @@ public class LogIn extends HttpServlet {
 					
 				   }
 				   else{
-					  
-					   response.sendRedirect("verify.jsp");
+					   se.setAttribute("msg", "Please check your email !! :) ");
+					   response.sendRedirect("index.jsp");
 				   }
 
 

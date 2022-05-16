@@ -42,7 +42,7 @@ public class TodoCRUD extends HttpServlet {
 				
 				
 				Todo todo = new Todo(tname, tdes, tsdate, tedate);
-				     //todo.setUser(user);
+				     todo.setUser(user);
 				
 				try {
 					

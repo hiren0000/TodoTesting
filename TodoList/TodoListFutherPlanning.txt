@@ -14,7 +14,9 @@ Completed Tasks
 
 3) I have implemented email verification through url 
 
-4)ReSend email function implemented but the same url and the random code are sending, not creating new code
+4)ReSend email function implemented but the same url and the same random code are sending, not creating new code, 
+
+6) error comes with Forgot password please check and find a solutions (verify.jsp) at 33 line error(have to check this one 27/04/22)
 
 
 Remaining Tasks
@@ -22,5 +24,7 @@ Remaining Tasks
 5) In future want to make some changes in verification email, just want to send the OTP for the more security
 
 
+
 7) In future, try to implement OTP verification for forgot password as well
 
+8)Resend email button has to implement for forgot password as well.
