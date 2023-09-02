@@ -12,8 +12,14 @@ Security has been managed via the validation.
 
 #Controller
 
-This app has two controllers, one is user and Todo and both have CRUD functionalities.
+This app has two controllers, user and Todo and both have CRUD functionalities. 
 
 #Email
 
 This app supports email verification as well, When a user wants to register they will get an email for the email validation.
+
+#CRUD
+
+Todo has created, read, updated, and deleted functions.
+
+
